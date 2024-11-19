@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+  {% block content %}  
+      <div> 
+        <div class="container pt-10">
+          <div>
+            <div class="grid grid-cols-3 gap-10">
+              <div class="bg-white shadow-md min-w-64 min-h-32 mx-auto border border-gray-200 "><div class="grid-flow-row px-4 py-2 bg-emerald-900 text-white text-center">Budget</div><p class="text-center m-7"> 120 000 FCFA</p></div>
+              <div class="bg-white shadow-md min-w-64 min-h-32 mx-auto border border-gray-200 "><div class="grid-flow-row px-4 py-2 bg-emerald-900 text-white text-center">Budget</div><p class="text-center m-7"> 120 000 FCFA</p></div>
+              <div class="bg-white shadow-md min-w-64 min-h-32 mx-auto border border-gray-200 "><div class="grid-flow-row px-4 py-2 bg-emerald-900 text-white text-center">Budget</div><p class="text-center m-7"> 120 000 FCFA</p></div>
+            </div>
+          </div>
+          <br>
+          <div class="pl-11">
+            <h1 class="font text-2xl mb-4 text-[#D1C000]">La liste des depenses</h1>
+            <table class="border-collapse border border-slate-300 inline-table w-full">
+                <thead>
+                  <tr>
+                    
+                    <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">TITRE</th>
+                    <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">MONTANT</th>
+                    <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">ACTION</th>
+                    
+                   
+                  </tr>
+                </thead>
+                {% for depense in depenses %}
+                <tbody>
+                  <tr>
+                    <td class="border border-slate-300 px-4 py-2">{{depense.titre}}</td>
+                    <td class="border border-slate-300 px-4 py-2">{{depense.montant}}</td>
+                   
+                    <td class="border border-slate-300 px-4 py-2">
+                      <a href="#" class="bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-violet-300 p-2 rounded text-white">
+                        Supprimer
+                      </a>
+                     
+                    </td>
+                  </tr>
+                </tbody>
+                {% endfor %} 
+                <tr>
+                  <td class="border border-slate-300 px-4 py-2">
+                    <div>
+                      <a href="/create_dep" class="flex flex-wrap text-[#D1C000]">Ajout depense
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="float-right size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+
+                      </a>
+                    </div> 
+                  </td>
+                 </tr>
+              </table>
+            </div> 
+
+            </div>  
+             
+    </div>
+  {% endblock content %}
+
