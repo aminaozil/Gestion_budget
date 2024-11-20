@@ -52,7 +52,7 @@ def create_dep():
         except Exception:
             return "erreure "
     else:
-        flash("Ajout fait avec success")
+        flash("Ajout fait avec success", "success")
         redirect("/")
 
     return render_template("create_depense.html",error=error)
@@ -65,6 +65,7 @@ def delete(id):
     try:
         db.session.delete(depenses)
         db.session.commit()
+        flash("La supression a reussi !!", "danger")
         return redirect("/")
     except Exception:
         
@@ -79,6 +80,7 @@ def update(id):
         
         try:
             db.session.commit()
+            flash("La modification a reussi !!")
             return redirect("/")
         except Exception:
             print("erreur")

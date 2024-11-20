@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-
+{% include "logo.html" %}
 {% block content %}
 
 <form action="/update/{{depense.id}}" method="POST"
   class=" max-w-md mx-auto rounded-xl m-8 pb-10 pt-10 pr-10 pl-10">
-  <h1 class="uppercase size-16 text-center mb-5 text-emerald-900" >Mise a jour Depense</h1>
+  <h1 class="mb-5 text-emerald-900 text-center" >MISE A JOUR DEPENSE</h1>
   
   <label for="Titre" class="text-emerald-900 size-16">Titre</label>
   <div class="mb-5">

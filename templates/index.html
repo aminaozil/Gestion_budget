@@ -2,8 +2,9 @@
 
 
   {% block content %}  
+  {% include "logo.html" %}
       <div> 
-        <div class="container pt-10">
+        <div class="container pt-5">
           <div>
             
             <div class="grid grid-cols-3 gap-10">
@@ -15,7 +16,7 @@
           </div>
           <br>
           <div class="pl-11">
-            <h1 class="font text-2xl mb-4 text-[#D1C000]">La liste des depenses</h1>
+            <h1 class="font text-2xl mb-4 text-[#D1C000]">Liste des depenses</h1>
             {% include "layouts.html" %}
             
             
@@ -33,8 +34,8 @@
                 {% for depense in depenses %}
                 <tbody>
                   <tr>
-                    <td class="border border-slate-300 px-4 py-2"><a href="/update/{{depense.id}}/">{{depense.titre}}</a></td>
-                    <td class="border border-slate-300 px-4 py-2"><a href="/update/{{depense.id}}/">{{depense.montant}}</a></td>
+                    <td class="border border-slate-300 px-4 py-2 "><a class="hover:text-[#D1C000]" href="/update/{{depense.id}}/">{{depense.titre}}</a></td>
+                    <td class="border border-slate-300 px-4 py-2"><a class="hover:text-[#D1C000]" href="/update/{{depense.id}}/">{{depense.montant}}</a></td>
                    
                     <td class="border border-slate-300 px-4 py-2">
                       <a href="/delete/{{depense.id}}/" 
@@ -49,7 +50,7 @@
                 <tr>
                   <td class="border border-slate-300 px-4 py-2">
                     <div>
-                      <a href="/create_dep" class="flex flex-wrap text-[#D1C000]">Ajout depense
+                      <a href="/create_dep" class="flex flex-wrap text-[#D1C000]">AJOUTER DEPENSE
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="float-right size-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                         </svg>
