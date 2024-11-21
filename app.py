@@ -36,15 +36,23 @@ def index():
     # et scalar() pour renvoyer une seule valeur
     total_deps = db.session.query(db.func.sum(Depense.montant)).scalar()
     budget = db.session.query(db.func.sum(Revenu.montant)).scalar()
-    solde = total_deps - budget
+    solde = budget - total_deps
 
     return render_template("index.html",total_deps=total_deps, depenses=depenses, revenus=revenus, budget=budget, solde=solde)
 
+
+
+##########################################################################
 #index pour depense
 @app.route("/depense")
 def index_depense():
    
     return render_template("depense/index_depense.html")
+
+@app.route("/impo_dep")
+def impo_dep():
+   
+    return render_template("depense/impo_dep.html")
 
 #create depense
 @app.route("/create_dep", methods=["GET","POST"])
