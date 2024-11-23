@@ -742,6 +742,10 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-cols-subgrid {
+  grid-template-columns: subgrid;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -760,6 +764,10 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .-space-x-px > :not([hidden]) ~ :not([hidden]) {
@@ -981,6 +989,10 @@ video {
 @media (min-width: 640px) {
   .sm\:inline {
     display: inline;
+  }
+
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
