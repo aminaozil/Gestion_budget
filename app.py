@@ -47,12 +47,12 @@ def index():
 @app.route("/depense")
 def index_depense():
    
-    return render_template("depense/index_depense.html")
+    return render_template("/depense/index_depense.html")
 
 @app.route("/impo_dep")
 def impo_dep():
    
-    return render_template("depense/impo_dep.html")
+    return render_template("/depense/impo_dep.html")
 
 #create depense
 @app.route("/create_dep", methods=["GET","POST"])
@@ -74,7 +74,7 @@ def create_dep():
         flash("Ajout fait avec success", "success")
         redirect("/")
 
-    return render_template("depense/create_depense.html")
+    return render_template("/depense/create_depense.html")
 
 
 @app.route("/delete/<int:id>/")
@@ -104,7 +104,7 @@ def update(id):
         except Exception:
             print("erreur")
     
-    return render_template("depense/update.html", depense=depense)
+    return render_template("/depense/update.html", depense=depense)
 
 ################################################
 #la classe revenu creation des tables
@@ -120,7 +120,7 @@ class Revenu(db.Model):
 @app.route("/revenu")
 def index_revenu():
 
-    return render_template("revenu/index_revenu.html")
+    return render_template("/revenu/index_revenu.html")
 
 #supprimer revenu
 @app.route("/delete_revenu/<int:id>/")
@@ -129,6 +129,7 @@ def delete_revenu(id):
     try:    
         db.session.delete(revenus)
         db.session.commit()
+        flash("Supression fait avec success", "success")
         return redirect("/")
     except Exception:
         print("invalid")
@@ -143,11 +144,30 @@ def create_revenu():
             rev=Revenu(titre=titre, montant=montant)
             db.session.add(rev)
             db.session.commit()
+            flash("Ajout fait avec success", "success")
             return redirect("/")
         except Exception:
             print("une s'est produite")
         
-    return render_template("revenu/create_revenu.html")
+    return render_template("/revenu/create_revenu.html")
+# modifier revenu
+@app.route("/update_revenu/<int:id>/", methods=["GET", "POST"])
+def update_revenu(id):
+    revenu = Revenu.query.get_or_404(id)
+    if request.method == "POST":
+        revenu.titre = request.form['titre']
+        revenu.montant = request.form['montant']
+        try:
+            db.session.commit()
+            flash("Modification fait avec success", "success")
+            return redirect("/")
+        except Exception:
+            print("erreur est pro")
+    return render_template("/revenu/update_revenu.html", revenu=revenu)
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
