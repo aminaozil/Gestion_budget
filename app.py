@@ -22,11 +22,11 @@ class Depense(db.Model):
         return f"Gestion_budget: {self.titre_depense, self.montant_depense}"
 
 #liste page index pour depense
-@app.route("/")
+@app.route("/index")
 def index():
     return render_template("index.html")
 
-@app.route("/index_depense")
+@app.route("/")
 def index_depense():
     depenses = Depense.query.order_by(Depense.titre_depense)
    
@@ -45,7 +45,7 @@ def create_dep():
             db.session.add(dep)
             db.session.commit()
             flash("Ajout fait avec success", "success")
-            return redirect("/index_depense")
+            return redirect("/")
         except Exception:
             return "erreure "
     else:
@@ -63,7 +63,7 @@ def delete_depense(id):
         db.session.delete(depenses)
         db.session.commit()
         flash("La supression a reussi !!")
-        return redirect("/index_depense")
+        return redirect("/")
     except Exception:
         
         print("une erreure s'est produite")
@@ -78,7 +78,7 @@ def update(id):
         try:
             db.session.commit()
             flash("La modification a reussi !!")
-            return redirect("/index_depense")
+            return redirect("/")
         except Exception:
             print("erreur")
     
