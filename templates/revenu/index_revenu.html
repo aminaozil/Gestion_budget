@@ -20,12 +20,12 @@
         {% for revenu in revenus %}
         <tbody>
           <tr>
-            <td class="border border-slate-300 px-4 py-2 "><a class="hover:text-[#D1C000]" href="/update_revenu/{{revenu.id}}/">{{revenu.titre}}</a></td>
-            <td class="border border-slate-300 px-4 py-2"><a class="hover:text-[#D1C000]" href="/update_revenu/{{revenu.id}}/">{{revenu.montant}}</a></td>
+            <td class="border border-slate-300 px-4 py-2 "><a class="hover:text-[#D1C000]" href="/update_revenu/{{revenu.id}}/">{{revenu.titre_revenu}}</a></td>
+            <td class="border border-slate-300 px-4 py-2"><a class="hover:text-[#D1C000]" href="/update_revenu/{{revenu.id}}/">{{revenu.montant_revenu}}</a></td>
            
             <td class="border border-slate-300 px-4 py-2">
               <a href="/delete_revenu/{{revenu.id}}/" 
-              class="bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-violet-300 p-2 rounded text-white">
+              class="bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-violet-300 p-2 rounded text-white" onclick="return confirm('Vous voulez vraiment supprimer cette depense')">
                 Supprimer
               </a>
              
@@ -48,7 +48,6 @@
       </table>
       
       <br>
-      
       <nav aria-label="Page navigation example">
         <ul class="flex items-center -space-x-px h-8 text-sm">
           {% if revenus.has_prev %}
@@ -74,13 +73,13 @@
            &nbsp;&nbsp;
           {% for page_num in revenus.iter_pages() %}
           
-          <!-- Check if the page number exists (not None) -->
-          {% if page_num %}
-          &nbsp;&nbsp;
+          <!--  Check if the page number exists (not None) -->
+           {% if page_num %} 
+          
           <!-- Check if the current page is not the active page -->
-          {% if page_num != revenus.page %}
+           {% if page_num != revenus.page %} 
           <!-- Create a clickable link for the page number -->
-          <li class="page-item"><a class="page-link text-emerald-900" href="/?page={{ page_num }}">{{ page_num }}</a></li>&nbsp;&nbsp;
+           <li class="page-item"><a class="page-link text-emerald-900" href="/?page={{ page_num }}">{{ page_num }}</a></li>&nbsp;&nbsp;
           {% else %}
           
           <!-- Highlight the current page as active and not clickable -->
@@ -88,10 +87,10 @@
               <span class="page-link text-emerald-900">{{ page_num }}</span>
           </li>
           {% endif %}
-          {% else %}
+          {% else %}  
           
           <!-- For gaps in the pagination links, show ellipsis -->
-          <li class="page-item disabled"><span class="page-link">...</span></li>
+           <li class="page-item disabled"><span class="page-link">...</span></li>
           {% endif %}
           {% endfor %}
           &nbsp;&nbsp;
@@ -106,7 +105,7 @@
               </svg>
             </a>
           </li>
-          {% else %}
+          {% else %} 
           <li>
             <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-emerald-900 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
               <span class="sr-only">Next</span>
@@ -119,6 +118,6 @@
         </ul>
       </nav>
 
-  </div> 
+     
 
 {% endblock content %}

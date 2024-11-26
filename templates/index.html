@@ -21,65 +21,63 @@
           <div>
             <div class="pl-11">
               <h1 class="font text-2xl mb-4 text-[#D1C000]">Liste des depenses</h1>
-              
-              
-              
-              <table class="border-collapse border border-slate-300 inline-table w-full">
-                  <thead>
-                    <tr>
+  
+                <table class="border-collapse border border-slate-300 inline-table w-full">
+                    <thead>
+                      <tr>
+                        
+                        <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">TITRE</th>
+                        <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">MONTANT</th>
+                        <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">ACTION</th>
+                        
                       
-                      <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">TITRE</th>
-                      <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">MONTANT</th>
-                      <th class="border border-slate-300 px-4 py-2 bg-emerald-900 text-white text-left">ACTION</th>
+                      </tr>
+                    </thead>
+                    {% for depense in depenses %}
+                    <tbody>
+                      <tr>
+                        <td class="border border-slate-300 px-4 py-2 "><a class="hover:text-[#D1C000]" href="/update/{{depense.titre_montant}}">{{ depense.titre_depense }}</a></td>
+                        <td class="border border-slate-300 px-4 py-2"><a class="hover:text-[#D1C000]" href="">{{ depense.montant_depense}}</a></td>
                       
-                     
-                    </tr>
-                  </thead>
-                  {% for depense in depenses %}
-                  <tbody>
+                        <td class="border border-slate-300 px-4 py-2">
+                          <a href="/delete_depense/{{depense.id}}/" 
+                          class="bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-violet-300 p-2 rounded text-white" onclick="return confirm('Vous voulez vraiment supprimer cette depense')">
+                            Supprimer
+                          </a>
+                        
+                        </td>
+                      </tr>
+                    </tbody>
+                    {% endfor %}
+                    {% if  budget  >  total_deps %}
                     <tr>
-                      <td class="border border-slate-300 px-4 py-2 "><a class="hover:text-[#D1C000]" href="/update/{{depense.id}}/">{{depense.titre}}</a></td>
-                      <td class="border border-slate-300 px-4 py-2"><a class="hover:text-[#D1C000]" href="/update/{{depense.id}}/">{{depense.montant}}</a></td>
-                     
                       <td class="border border-slate-300 px-4 py-2">
-                        <a href="/delete/{{depense.id}}/" 
-                        class="bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:ring focus:ring-violet-300 p-2 rounded text-white">
-                          Supprimer
-                        </a>
-                       
+                        <div>
+                          <a href="/create_dep" class="flex flex-wrap text-[#D1C000]">AJOUTER DEPENSE
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="float-right size-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+
+                          </a>
+                        </div> 
                       </td>
                     </tr>
-                  </tbody>
-                  {% endfor %} 
-                  {% if  budget  >  total_deps %}
-                  <tr>
-                    <td class="border border-slate-300 px-4 py-2">
-                      <div>
-                        <a href="/create_dep" class="flex flex-wrap text-[#D1C000]">AJOUTER DEPENSE
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="float-right size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                          </svg>
-          
-                        </a>
-                      </div> 
-                    </td>
-                   </tr>
-                   {% else %}
-                   <tr>
-                    <td class="border border-slate-300 px-4 py-2">
-                      <div>
-                        <a href="/impo_dep" class="flex flex-wrap text-red-300">AJOUTER DEPENSE
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="float-right size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                          </svg>
-          
-                        </a>
-                      </div> 
-                    </td>
-                   </tr>
-                   {% endif %}
-                   
-                </table>
+                    {% else %}
+                    <tr>
+                      <td class="border border-slate-300 px-4 py-2">
+                        <div>
+                          <a href="/impo_dep" class="flex flex-wrap text-red-300">AJOUTER DEPENSE
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="float-right size-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+
+                          </a>
+                        </div> 
+                      </td>
+                    </tr>
+                    {% endif %}
+                    
+                  </table>
           
                 <br>
                 <nav aria-label="Page navigation example">
