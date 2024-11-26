@@ -8,7 +8,7 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 app.secret_key = 'flash message'
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:@host:3306/gestion_budget"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:@localhost:3306/gestion_budget"
 app.config['SQLALCHEMY_TRACK_MODICATIONS'] = False
 
 #configuration SQLAlchemy la base de données et le nom de la bd est gestion_app
