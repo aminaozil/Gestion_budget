@@ -90,14 +90,12 @@ def update(id):
     if request.method == "POST":
         depense.titre_depense = request.form['titre_depense']
         depense.montant_depense = request.form['montant_depense']
-        
         try:
             db.session.commit()
-            flash("La modification a reussi !!")
+            flash("Modification fait avec success", "success")
             return redirect("/")
         except Exception:
-            print("erreur")
-    
+            print("erreur est pro")
     return render_template("/depense/update.html", depense=depense)
 
 
